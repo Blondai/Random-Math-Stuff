@@ -1,0 +1,7 @@
+# Folder
+/target
+/.idea
+
+# Files
+cargo.lock
+test.rs
