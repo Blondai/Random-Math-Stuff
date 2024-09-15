@@ -5,7 +5,16 @@ I will add some more or less useful math related stuff to this, so it can be reu
 
 ## Overview
 Currently implemented structs and methods.
+- Rational struct
+  - Basic arithmetic operations (+, -, *, /, ^)
+  - Equations and orders (==, <=, >=, <, >)
+  - Greatest common divisor and least common multiple
+  - Simplification for reducible fractions
+  - Evaluation
 
 ## Future Additions
+- Gaussian numbers
+- Complex numbers
+- Matrices
 
 ## TODOs
