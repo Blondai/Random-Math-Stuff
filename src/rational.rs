@@ -120,7 +120,7 @@ impl Rational {
     /// One as a `Rational` instance represented by 1/1.
     ///
     /// # Examples
-    /// Initializes.
+    /// Initializes one.
     /// ```
     /// let one: Rational = Rational::one();
     /// assert_eq!(one, Rational::new(true, 1, 1));
@@ -259,9 +259,9 @@ impl PartialOrd for Rational {
 
 // Greatest Common Divisor
 impl Rational {
-    /// Calculates the [greatest common divisor](https://en.wikipedia.org/wiki/Greatest_common_divisor) (gcd) of any two numbers using [Euclidean Algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm).
+    /// Calculates the [greatest common divisor](https://en.wikipedia.org/wiki/Greatest_common_divisor) (gcd) of two numbers using the [Euclidean Algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm).
     /// The greatest common divisor is the biggest number dividing both numbers without remainder.
-    /// This is a symmetric action, so `number_1.gcd(number_2) == number_2.gcd(number_1)`.
+    /// This is a symmetric action, so `Rational::greatest_common_divisor(number_1, number_2) == Rational::greatest_common_divisor(number_2, number_1)`.
     ///
     /// # Arguments
     /// * `number_1` (`NumberType`) - The first number.
@@ -528,11 +528,11 @@ impl Rational {
 impl Mul for Rational {
     type Output = Rational;
 
-    /// Multiplies two `Rational` instances and returns a new `Rational` instance.
+    /// Multiplies two `Rational` instances.
     ///
     /// # Arguments
-    /// * `self` - The first `Rational` instance.
-    /// * `other` - The second `Rational` instance.
+    /// * `self` - The first factor.
+    /// * `other` - The second factor.
     ///
     /// # Returns
     /// A new `Rational` instance representing the product of the two rational numbers.
@@ -776,7 +776,7 @@ impl Sub for Rational {
     ///
     /// # Returns
     /// The difference of `self` minus `other`.
-    /// This uses addition and `negation` method internally.
+    /// This uses addition and negation internally.
     /// So the result is also simplified using the `simplify` method.
     /// Mathematically p - q = p + (- q).
     ///
