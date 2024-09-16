@@ -5,16 +5,22 @@ I will add some more or less useful math related stuff to this, so it can be reu
 
 ## Overview
 Currently implemented structs and methods.
-- Rational struct
+- `Rational` struct
   - Basic arithmetic operations (+, -, *, /, ^)
   - Equations and orders (==, <=, >=, <, >)
   - Greatest common divisor and least common multiple
   - Simplification for reducible fractions
   - Evaluation
+- `GaussianIntegers` struct
+  - Basic arithmetic operations (+, -, *, /, %)
+  - Equations (==)
+  - Norm and complex conjugate
+  - Greatest common divisors and least common multiples
 
 ## Future Additions
-- Gaussian numbers
+- Polynomials
 - Complex numbers
 - Matrices
 
 ## TODOs
+- `is_prime` method for `GaussianIntegers`
