@@ -16,11 +16,21 @@ Currently implemented structs and methods.
   - Equations (==)
   - Norm and complex conjugate
   - Greatest common divisors and least common multiples
+- `Polynomials` struct
+  - Basic arithmetic operations (+, -, *, /, %)
+  - Equations (==)
+  - Normalization
+  - Greatest common divisors and least common multiples
+  - Differentiation and integration
 
 ## Future Additions
-- Polynomials
 - Complex numbers
 - Matrices
+- Trigonometric functions
 
 ## TODOs
-- `is_prime` method for `GaussianIntegers`
+- `is_prime` method for `GaussianIntegers`.
+- `solve` method for `Polynomial`.
+- `numeric_solve` for `Polynomial`.
+- `approximate` for `Polynomial`.
+- `factorice` for `Polynomial`.
