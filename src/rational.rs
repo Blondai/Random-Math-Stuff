@@ -37,7 +37,7 @@ impl Rational {
     /// * `denominator` (`NumberType`) - The value of the denominator.
     ///
     /// # Returns
-    /// The `Rational` instance representing the values.
+    /// A `Rational` instance representing the values.
     ///
     /// # Examples
     /// * Initializes 1/3 = 0.3333333333333333.
@@ -62,7 +62,7 @@ impl Rational {
     /// `number` (`NumberType`) - The natural number you want to convert to a `Rational` instance.
     ///
     /// # Returns
-    /// The `Rational` instance representing number with one as a denominator.
+    /// A `Rational` instance representing number with one as a denominator.
     ///
     /// # Examples
     /// Initializes 1.
@@ -83,7 +83,7 @@ impl Rational {
     /// `number` (`IntegerType`) - The integer number you want to convert to a `Rational` instance.
     ///
     /// # Returns
-    /// The `Rational` instance representing the number with one as a denominator.
+    /// A `Rational` instance representing the number with one as a denominator.
     ///
     /// # Examples
     /// * Initializes -5.
@@ -226,7 +226,7 @@ impl PartialOrd for Rational {
     /// * `other` - A reference to the second `Rational` instance.
     ///
     /// # Returns
-    /// The comparison is archived by converting the `Rational` instances to floats by using the `eval` method.
+    /// The comparison is archived by converting a `Rational` instances to floats by using the `eval` method.
     /// After this they are compared using the `partial_cmp` method for floats.
     /// * `Some(Ordering::Less)` if `self` is less than `other`.
     /// * `Some(Ordering::Equal)` if `self` is equal to `other`.
@@ -431,7 +431,7 @@ impl Rational {
     /// `self` - A reference to the `rational` instance.
     ///
     /// # Returns
-    /// Simplified version of a `Rational` instance.
+    /// A simplified version of a `Rational` instance.
     /// If the gcd of numerator and denominator are one, the rational number is returned unchanged.
     /// Otherwise, numerator and denominator are divided by the gcd.
     ///
@@ -491,12 +491,7 @@ impl Rational {
     /// assert!(!Rational::coprime(number_1, number_2));
     /// ```
     pub fn coprime(number_1: NumberType, number_2: NumberType) -> bool {
-        let gcd: NumberType = Rational::greatest_common_divisor(number_1, number_2);
-        if gcd == 1 {
-            true
-        } else {
-            false
-        }
+        Rational::greatest_common_divisor(number_1, number_2) == 1
     }
 
     /// Checks whether a `Rational` instance is in its reduced form.
@@ -616,7 +611,7 @@ impl Div for Rational {
     /// * `other` - The divisor.
     ///
     /// # Returns
-    /// The Quotient of `self` divided by `other`.
+    /// A `Rational` instance representing the Quotient of `self` divided by `other`.
     /// This uses multiplication and the `inv` method internally.
     /// So the result also is simplified using the `simplify` method.
     /// Mathematically p / q = p * q^-1.
@@ -652,7 +647,7 @@ impl Add for Rational {
     /// * `other` - The second summand.
     ///
     /// # Returns
-    /// The sum of `self` and `other`.
+    /// A `Rational` instance representing the sum of `self` and `other`.
     /// First the `common_denominator` method is used to get both summands on the same denominator and scale the numerators accordingly.
     /// This is implemented differentiating between all possible cases of combinations of signs and if one value is bigger than the other.
     /// In each case the sum also is simplified using the `simplify` method.
@@ -679,6 +674,9 @@ impl Add for Rational {
     /// let sum: Rational = rational_1 + rational_2;
     /// assert_eq!(sum, Rational::new(false, 1, 2));
     /// ```
+    ///
+    /// # Notes
+    /// This method can probably be simplified.
     fn add(self: Rational, other: Rational) -> Self::Output {
         let (rational_1, rational_2): (Rational, Rational) = self.common_denominator(&other);
         if rational_1.positive && rational_2.positive {
@@ -735,7 +733,7 @@ impl Neg for Rational {
     /// `self` - A `Rational` instance.
     ///
     /// # Returns
-    /// The negative of the `Rational` instance.
+    /// A `Rational` instance representing the negative of the `Rational` instance.
     /// This is achieved by just logically negating the `positive` attribute.
     /// For sake of consistency the result is simplified using the `simplify` method.
     ///
@@ -775,7 +773,7 @@ impl Sub for Rational {
     /// * `other` - The subtrahend.
     ///
     /// # Returns
-    /// The difference of `self` minus `other`.
+    /// A `Rational` instance representing the difference of `self` minus `other`.
     /// This uses addition and negation internally.
     /// So the result is also simplified using the `simplify` method.
     /// Mathematically p - q = p + (- q).
@@ -904,7 +902,7 @@ impl Rational {
     /// `self` - A reference to a `Rational` instance.
     ///
     /// # Returns
-    /// The absolute value of the `Rational` instance by simply setting the `positive` Attribute to `true`.
+    /// The absolute value of a `Rational` instance by simply setting the `positive` Attribute to `true`.
     /// For sake of consistency the result is simplified using the `simplify` method.
     ///
     /// # Examples

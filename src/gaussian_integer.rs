@@ -31,7 +31,7 @@ impl GaussianInteger {
     /// * `imaginary` (`NumberType`) - The imaginary part of the complex integer.
     ///
     /// # Returns
-    /// The `GaussianInteger` instance representing the values `real` + `imaginary` * i.
+    /// A `GaussianInteger` instance representing the values `real` + `imaginary` * i.
     ///
     /// # Examples
     /// * Initializes 1+i.
@@ -52,7 +52,7 @@ impl GaussianInteger {
     /// `integer` (`NumberType`) - The integer to be converted to a `GaussianInteger` instance.
     ///
     /// # Returns
-    /// The `GaussianInteger` instance representing the integer using `ZERO` as an `imaginary` part.
+    /// A `GaussianInteger` instance representing the integer using `ZERO` as an `imaginary` part.
     ///
     /// # Examples
     /// * Initializes 5.
@@ -233,7 +233,7 @@ impl GaussianInteger {
     /// `self` - A reference to a `GaussianInteger` instance.
     ///
     /// # Returns
-    /// The norm of the `GaussianInteger` instance in form of a integer of type `NumberType`.
+    /// The norm of a `GaussianInteger` instance in form of a integer of type `NumberType`.
     /// This is achieved by adding the squares of the real and imaginary part.
     ///
     /// # Examples
@@ -262,7 +262,7 @@ impl GaussianInteger {
     /// `self` - A reference to a `GaussianInteger` instance.
     ///
     /// # Returns
-    /// The complex conjugate of the `GaussianInteger` instance.
+    /// The complex conjugate of a `GaussianInteger` instance.
     /// This is achieved by flipping the sign of the imaginary part.
     ///
     /// # Examples
@@ -318,11 +318,7 @@ impl GaussianInteger {
     /// assert!(!is_real);
     /// ```
     pub fn is_real(&self) -> bool {
-        if self.imaginary == ZERO {
-            true
-        } else {
-            false
-        }
+        self.imaginary == ZERO
     }
 
     /// Checks if a `GaussianInteger` instance is purely imaginary.
@@ -348,11 +344,7 @@ impl GaussianInteger {
     /// assert!(!is_imaginary);
     /// ```
     pub fn is_imaginary(&self) -> bool {
-        if self.real == ZERO {
-            true
-        } else {
-            false
-        }
+        self.real == ZERO
     }
 }
 
@@ -512,7 +504,7 @@ impl Div for GaussianInteger {
     /// * `other` - The divisor.
     ///
     /// # Returns
-    /// A `GaussianInteger` instance representing the Quotient of `self` and `other`.
+    /// A `GaussianInteger` instance representing the auotient of `self` and `other`.
     /// This uses floating point division and the `round` method to get an integer result.
     /// Mathematically x = y * q + r with quotient q and remainder r.
     ///
@@ -544,7 +536,7 @@ impl Div for GaussianInteger {
 impl Rem for GaussianInteger {
     type Output = GaussianInteger;
 
-    /// Calculates the remainder of the Euclidean Division fo two `GaussianInteger` instances.
+    /// Calculates the remainder of the Euclidean Division of two `GaussianInteger` instances.
     ///
     /// # Arguments
     /// * `self` - The dividend.
@@ -731,7 +723,7 @@ impl GaussianInteger {
     /// * `other` - A reference to the second `GaussianInteger`.
     ///
     /// # Returns
-    /// A `GaussianInteger` representing a least common multiple.
+    /// A `GaussianInteger` instance representing a least common multiple.
     /// This is calculated by calculating one greatest common divisor with the `greatest_common_divisor` method
     /// and using its definition.
     ///
