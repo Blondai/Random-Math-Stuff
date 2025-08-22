@@ -8,4 +8,4 @@ pub use complex::Complex;
 pub use gaussian_integer::GaussianInteger;
 pub use number::{Float, Integer, Natural, Numeric};
 pub use polynomial::Polynomial;
-pub use rational::Rational;
+pub use rational::{Rational, RationalError};

@@ -25,6 +25,7 @@ pub trait Integer:
     + Display
     + PartialEq
     + PartialOrd<Self>
+    + Ord
     + Add<Self, Output = Self>
     + Sub<Self, Output = Self>
     + Neg<Output = Self>
@@ -100,6 +101,34 @@ pub trait Integer:
     /// ```
     fn coprime(self, other: Self) -> bool {
         self.gcd(other) == Self::one()
+    }
+
+    /// Calculates the integer power of a number using exponentiation by squaring.
+    ///
+    /// This method provides an efficient O(log `exp`) implementation.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// # use random_math_stuff::Integer;
+    /// assert_eq!(2i32.pow(10), 1024);
+    /// assert_eq!(3i32.pow(0), 1);
+    /// ```
+    fn pow(self, exp: u32) -> Self {
+        let mut base: Self = self;
+        let mut product: Self = Self::one();
+        let mut remaining_exponent: u32 = exp;
+
+        // Decompose into powers of 2
+        while remaining_exponent > 0 {
+            if remaining_exponent % 2 == 1 {
+                product = product * base;
+            }
+            // Prepare for the next bit of the exponent.
+            base = base * base;
+            remaining_exponent = remaining_exponent / 2;
+        }
+        product
     }
 }
 

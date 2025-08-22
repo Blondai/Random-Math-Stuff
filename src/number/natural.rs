@@ -23,6 +23,7 @@ pub trait Natural:
     + Display
     + PartialEq
     + PartialOrd<Self>
+    + Ord
     + Add<Self, Output = Self>
     + Sub<Self, Output = Self>
     + Rem<Output = Self>
