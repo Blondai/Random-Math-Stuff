@@ -43,33 +43,39 @@ impl<T: Numeric> Complex<T> {
     /// # use random_math_stuff::Complex;
     /// let z = Complex::new(1.0, 2.0);
     /// ```
+    #[inline]
     pub fn new(real: T, imag: T) -> Complex<T> {
         Self { real, imag }
     }
 
     /// Returns the additive identity, 0.
+    #[inline]
     pub fn zero() -> Complex<T> {
         let zero: T = T::zero();
         Self::new(zero, zero)
     }
 
     /// Returns the multiplicative identity, 1.
+    #[inline]
     pub fn one() -> Complex<T> {
         Self::new(T::one(), T::zero())
     }
 
     /// Returns the imaginary unit, _i_.
+    #[inline]
     pub fn i() -> Complex<T> {
         Self::new(T::zero(), T::one())
     }
 
     /// Returns the real part of the complex number.
-    pub fn real(&self) -> T {
+    #[inline]
+    pub const fn real(&self) -> T {
         self.real
     }
 
     /// Returns the imaginary part of the complex number.
-    pub fn imag(&self) -> T {
+    #[inline]
+    pub const fn imag(&self) -> T {
         self.imag
     }
 
@@ -85,6 +91,7 @@ impl<T: Numeric> Complex<T> {
     ///
     /// assert_eq!(z.norm_sq(), 5.0);
     /// ```
+    #[inline]
     pub fn norm_sq(&self) -> T {
         self.real * self.real + self.imag * self.imag
     }
@@ -106,6 +113,7 @@ impl<T: Numeric> Complex<T> {
     ///
     /// assert_eq!(z * z.inv(), Complex::one());
     /// ```
+    #[inline]
     pub fn inv(&self) -> Complex<T> {
         let norm_sq: T = self.norm_sq();
 
@@ -127,6 +135,7 @@ impl<T: Numeric> Complex<T> {
     ///
     /// assert_eq!(z.conj(), Complex::new(1.0, -2.0));
     /// ```
+    #[inline]
     pub fn conj(&self) -> Complex<T> {
         Self {
             real: self.real,
