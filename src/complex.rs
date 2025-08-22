@@ -1,3 +1,4 @@
+use std::cmp::Ordering;
 use std::fmt::{Display, Formatter};
 use std::ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Neg, Sub, SubAssign};
 
@@ -374,5 +375,42 @@ impl<T: Numeric> DivAssign for Complex<T> {
 
         self.real = new_real;
         self.imag = new_imag;
+    }
+}
+
+impl<T: Numeric> PartialOrd for Complex<T> {
+    /// Compares two complex numbers lexicographically.
+    ///
+    /// The comparison is first done on the real part.
+    /// If the real parts are equal, the imaginary parts are then compared.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// # use random_math_stuff::Complex;
+    /// let z_1 = Complex::new(1.0, 5.0);
+    /// let z_2 = Complex::new(2.0, 3.0);
+    /// let z_3 = Complex::new(2.0, 4.0);
+    ///
+    /// assert!(z_1 < z_2);
+    /// assert!(z_2 < z_3);
+    /// ```
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        match self.real.partial_cmp(&other.real) {
+            // Real parts are equal
+            Some(Ordering::Equal) => self.imag.partial_cmp(&other.imag),
+            // Compares real parts
+            other => other,
+        }
+    }
+}
+
+impl<T: Numeric> Numeric for Complex<T> {
+    fn zero() -> Self {
+        Self::zero()
+    }
+
+    fn one() -> Self {
+        Self::one()
     }
 }
