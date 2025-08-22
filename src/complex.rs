@@ -9,7 +9,7 @@ use crate::Numeric;
 /// A complex number is a number that can be expressed in the form `a + bi`,
 /// where `a` and `b` are real numbers, and `i` is the imaginary unit.
 #[derive(Debug, Copy, Clone, PartialEq)]
-pub struct Complex<T> {
+pub struct Complex<T: Numeric> {
     /// The real part of the complex number.
     real: T,
 
