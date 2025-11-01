@@ -154,7 +154,7 @@ impl GaussianInteger {
             GaussianInteger::one(),
             -GaussianInteger::one(),
             GaussianInteger::i(),
-            -GaussianInteger::i()
+            -GaussianInteger::i(),
         ]
     }
 }
@@ -526,8 +526,10 @@ impl Div for GaussianInteger {
     fn div(self: GaussianInteger, other: GaussianInteger) -> Self::Output {
         let numerator: GaussianInteger = self * other.conj();
         let denominator: NumberType = other.norm();
-        let real: NumberType = GaussianInteger::round((numerator.real as FloatType) / (denominator as FloatType));
-        let imaginary: NumberType = GaussianInteger::round((numerator.imaginary as FloatType) / (denominator as FloatType));
+        let real: NumberType =
+            GaussianInteger::round((numerator.real as FloatType) / (denominator as FloatType));
+        let imaginary: NumberType =
+            GaussianInteger::round((numerator.imaginary as FloatType) / (denominator as FloatType));
         GaussianInteger { real, imaginary }
     }
 }
@@ -589,7 +591,10 @@ impl GaussianInteger {
     /// let gcd: GaussianInteger = GaussianInteger::greatest_common_divisor(gaussian_integer_1, gaussian_integer_2);
     /// assert_eq!(gcd, GaussianInteger::new(1, -1));
     /// ```
-    pub fn greatest_common_divisor(mut number_1: GaussianInteger, mut number_2: GaussianInteger) -> GaussianInteger {
+    pub fn greatest_common_divisor(
+        mut number_1: GaussianInteger,
+        mut number_2: GaussianInteger,
+    ) -> GaussianInteger {
         while number_2.real != ZERO || number_2.imaginary != ZERO {
             let auxiliary: GaussianInteger = number_1 % number_2;
             number_1 = number_2;
@@ -653,7 +658,7 @@ impl GaussianInteger {
                 return gcd;
             }
         }
-        gcds[0]  // Impossible
+        gcds[0] // Impossible
     }
 
     /// Rounds a float number to the nearest integer.
@@ -742,7 +747,10 @@ impl GaussianInteger {
     /// let lcm: GaussianInteger = gaussian_integer_1.least_common_multiple(&gaussian_integer_2);
     /// assert_eq!(lcm, GaussianInteger::new(2, 2));
     /// ```
-    pub fn least_common_multiple(self: &GaussianInteger, other: &GaussianInteger) -> GaussianInteger {
+    pub fn least_common_multiple(
+        self: &GaussianInteger,
+        other: &GaussianInteger,
+    ) -> GaussianInteger {
         *self * *other / self.gcd(other)
     }
 
@@ -799,7 +807,7 @@ impl GaussianInteger {
                 return lcm;
             }
         }
-        lcms[0]  // Impossible
+        lcms[0] // Impossible
     }
 }
 

@@ -44,26 +44,26 @@ impl<T: Numeric> Complex<T> {
     /// let z = Complex::new(1.0, 2.0);
     /// ```
     #[inline]
-    pub fn new(real: T, imag: T) -> Complex<T> {
+    pub fn new(real: T, imag: T) -> Self {
         Self { real, imag }
     }
 
     /// Returns the additive identity, 0.
     #[inline]
-    pub fn zero() -> Complex<T> {
+    pub fn zero() -> Self {
         let zero: T = T::zero();
         Self::new(zero, zero)
     }
 
     /// Returns the multiplicative identity, 1.
     #[inline]
-    pub fn one() -> Complex<T> {
+    pub fn one() -> Self {
         Self::new(T::one(), T::zero())
     }
 
     /// Returns the imaginary unit, _i_.
     #[inline]
-    pub fn i() -> Complex<T> {
+    pub fn i() -> Self {
         Self::new(T::zero(), T::one())
     }
 
@@ -114,7 +114,7 @@ impl<T: Numeric> Complex<T> {
     /// assert_eq!(z * z.inv(), Complex::one());
     /// ```
     #[inline]
-    pub fn inv(&self) -> Complex<T> {
+    pub fn inv(&self) -> Self {
         let norm_sq: T = self.norm_sq();
 
         Self {
@@ -136,7 +136,7 @@ impl<T: Numeric> Complex<T> {
     /// assert_eq!(z.conj(), Complex::new(1.0, -2.0));
     /// ```
     #[inline]
-    pub fn conj(&self) -> Complex<T> {
+    pub fn conj(&self) -> Self {
         Self {
             real: self.real,
             imag: -self.imag,
@@ -159,7 +159,7 @@ impl<T: Numeric> Complex<T> {
     /// assert_eq!(z.powi(2), z * z);
     /// assert_eq!(z.powi(-3), z.inv() * z.inv() * z.inv());
     /// ```
-    pub fn powi(self, exp: i32) -> Complex<T> {
+    pub fn powi(self, exp: i32) -> Self {
         if exp == 0_i32 {
             Complex::one()
         } else if exp < 0_i32 {
@@ -378,6 +378,7 @@ impl<T: Numeric> DivAssign for Complex<T> {
     /// ```
     fn div_assign(&mut self, other: Self) {
         let norm: T = other.norm_sq();
+
         // New imaginary value uses the old real values
         let new_real: T = (self.real * other.real + self.imag * other.imag) / norm;
         let new_imag: T = (self.imag * other.real - self.real * other.imag) / norm;
